@@ -1,7 +1,20 @@
-# Shinobi Missions
+# Shinobi Missions: 3v3
 
-An unofficial Naruto-inspired cooperative browser arena prototype. Node.js 20+ is the only requirement; no package installation, credentials, database, or external assets are required. Optional Google Fonts fall back to system fonts.
+Unofficial Naruto-inspired browser multiplayer prototype. Requires Node.js 20+. No dependencies, credentials, or database are required. Run `npm start` and open the server address on port 3000 (override with PORT). Run `npm test` for combat rules and multiplayer HTTP validation.
 
-Run `npm start` from this directory. The server listens on port 3000 (override with PORT). Open the server address in a browser, choose a character or enter any Naruto character name, and join a room. Friends join the same server and room code, up to eight players. WASD/arrows move, J attacks, K uses a chakra burst. Defeat every enemy and select Next mission. A defeated squad can retry. Characters currently use the same combat abilities.
+Six human players join the same server and room code. Fixed teams are **Team 7** (Naruto, Sasuke, Sakura) and **Ino–Shika–Cho** (Ino, Shikamaru, Choji). Select your team and an unused character. Combat begins only when all six slots are filled. Eliminate the opposing trio to win; leaving during combat forfeits the match for your team. All remaining players must vote for a rematch. A depleted room returns to waiting after the vote.
 
-Rooms are ephemeral and reset after all connected players leave or the server restarts. This development prototype has no accounts, matchmaking, persistence, or production abuse protection. For remote play use a shared reachable server; separate server instances do not share rooms.
+WASD/arrows move, J attacks the nearest opponent within melee range, K uses a signature technique. There is no friendly fire. Technique ranges appear as colored circles; single-target abilities automatically select the nearest living opponent in range.
+
+| Character | Technique | Effect | Chakra | Cooldown |
+|---|---|---|---|---|
+| Naruto | Rasengan | 38 damage, single target | 30 | 2.2s |
+| Sasuke | Chidori | 32 damage, longer reach | 30 | 2.4s |
+| Sakura | Cherry Blossom Impact | 28 damage plus 22 healing to nearby living teammates | 35 | 3.5s |
+| Ino | Mind Transfer | 12 damage and 2.4s stun | 35 | 4.5s |
+| Shikamaru | Shadow Possession | 10 damage and 2s bind to nearby opponents | 30 | 4s |
+| Choji | Human Boulder | 30 area damage | 35 | 3s |
+
+These are simplified game adaptations. Basic attacks deal 12 damage. Chakra regenerates during combat. Eliminated players spectate until the rematch; healing cannot revive them. Abilities consume chakra even when no enemy is in range.
+
+Rooms live in server memory and reset after everyone disconnects or the server restarts. This prototype has no accounts, matchmaking, persistent progression, or production abuse protection. Friends must reach the same server; separate server instances do not share rooms. Google Fonts are optional and fall back to system fonts. No official artwork or audio is included.
